@@ -2,16 +2,21 @@ import os
 import pandas as pd
 import pickle
 from flask             import Flask, request, Response
+from pathlib           import Path
 from rossmann.Rossmann import Rossmann
 
 # loading model
+BASE_DIR = Path(__file__).resolve().parent
+model_path = BASE_DIR / 'model_rossmann.pkl'
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
 
 # inicialize API
 app = Flask(__name__)
 
 @app.route('/rossmann/predict', methods=['POST'])
 def rossmann_predict():
-    test_json = request.get_json()
+    test_json = request.get_json(silent=True)
     
     if test_json: # there is data
         if isinstance(test_json, dict):  # unique example (se o json tiver uma unica linha)
@@ -20,7 +25,7 @@ def rossmann_predict():
         else:  # multiple example (se receber varios jsons concatenados)
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
             
-        # Instantiate Rossmann Class
+        # instantiate rossmann class
         pipeline = Rossmann()
         
         # data cleaning
@@ -35,11 +40,12 @@ def rossmann_predict():
         # prediction
         df_response = pipeline.get_predict(model, test_raw, df3)
         
-        return df_response
+        return Response(df_response.to_json(orient='records'), mimetype='application/json')
         
     else:
         return Response('{}', status=200, mimetype='application/json')
 
+# running locally
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
     app.run(host='0.0.0.0', port=port)

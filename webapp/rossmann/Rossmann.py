@@ -5,6 +5,7 @@ import numpy as np
 import math
 import datetime
 from sklearn.preprocessing import LabelEncoder, RobustScaler, MinMaxScaler
+from pathlib               import Path
 
 
 class Rossmann (object):
@@ -12,12 +13,19 @@ class Rossmann (object):
 
     def __init__(self):
         
-        self.home_path=''
-        self.competition_distance_scaler   = pickle.load(open(self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb'))
-        self.competition_time_month_scaler = pickle.load(open(self.home_path + 'parameter/competition_time_month_scaler.pkl', 'rb'))
-        self.promo_time_week_scaler        = pickle.load(open(self.home_path + 'parameter/promo_time_week_scaler.pkl', 'rb'))
-        self.year_scaler                   = pickle.load(open(self.home_path + 'parameter/year_scaler.pkl', 'rb'))
-        self.store_type_scaler             = pickle.load(open(self.home_path + 'parameter/store_type_scaler.pkl', 'rb'))
+        base_path = Path(__file__).resolve().parent.parent
+
+        scalers = {
+            'competition_distance_scaler': 'competition_distance_scaler.pkl',
+            'competition_time_month_scaler': 'competition_time_month_scaler.pkl',
+            'promo_time_week_scaler': 'promo_time_week_scaler.pkl',
+            'year_scaler': 'year_scaler.pkl',
+            'store_type_scaler': 'store_type_scaler.pkl'
+        }
+        
+        for attr_name, file_name in scalers.items():
+            with open(base_path / 'parameter' / file_name, 'rb') as f:
+                setattr(self, attr_name, pickle.load(f))
         
         
     def data_cleaning(self, df1):
