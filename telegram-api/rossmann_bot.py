@@ -17,7 +17,7 @@ token = '8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk'
 # https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/getUpdates
 
 # # webhook 
-# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/setWebhook?url=https://monsoon-starboard-whacky.ngrok-free.dev
+# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/setWebhook?url=https://rossmann-telegram-bot-d8n7.onrender.com
 
 # # send message
 # https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/sendMessage?chat_id=895677125&text=hi bot 
