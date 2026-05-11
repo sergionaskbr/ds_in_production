@@ -10,18 +10,6 @@ from flask import Flask, request, Response
 # constants
 token = os.environ.get('TELEGRAM_BOT_TOKEN')
 
-# # bot info
-# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/getMe
-
-# # get updates
-# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/getUpdates
-
-# # webhook 
-# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/setWebhook?url=https://rossmann-telegram-bot-d8n7.onrender.com
-
-# # send message
-# https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/sendMessage?chat_id=895677125&text=hi bot 
-
 
 def send_message(chat_id, text):
     url = f'https://api.telegram.org/bot{token}/sendMessage'
@@ -143,14 +131,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
-
-# # showing prediction 
-# d2 = d1[['store', 'prediction']].groupby('store').sum().reset_index()
-
-# for i in range(len(d2)):
-#     value = d2.loc[i, 'prediction']
-#     value_eur = f"{value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    
-#     print(f"Store Number {d2.loc[i, 'store']} will sell €{value_eur} in the next 6 weeks")
-
