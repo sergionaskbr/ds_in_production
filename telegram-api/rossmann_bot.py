@@ -8,7 +8,7 @@ from flask import Flask, request, Response
 
 
 # constants
-token = '8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk'
+token = os.environ.get('TELEGRAM_BOT_TOKEN')
 
 # # bot info
 # https://api.telegram.org/bot8406535365:AAFqP0Bp-TyspQ_1sQ7bMihsDDHzOswnfSk/getMe
