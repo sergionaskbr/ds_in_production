@@ -1,4 +1,4 @@
-# ds_em_producao
+# ds_in_production
 
 This project consists of developing a machine learning model capable of predicting six weeks of future sales for business decisions using historical data from the Rossmann Store Sales competition, available on the Kaggle platform.
 
