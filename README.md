@@ -9,6 +9,7 @@ Using the Python language and technologies such as Pandas, NumPy, Scikit-Learn, 
 
 - Telegram Bot: @rossmann26_bot
 - API deployed on Render
+- Rossmann Store Sales competition on Kaggle: https://www.kaggle.com/c/rossmann-store-sales
 
 
 ## Live Prediction Example
